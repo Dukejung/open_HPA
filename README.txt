@@ -2,10 +2,10 @@ HPA (Hybrid Performance Analysis)
 
 We present an open source version of HPA, a fast and accurate schedulability analysis technique. It estimates the Worst Case Response Times (WCRTs) of the task graphs run on the distributed multi-core embedded system. It supports both preepmtive and non-preemptive scheduling policy. HPA is developed by Codesign And Parallel processing Laboratory (CAPLab), Seoul National University.
 
-The sources of HPA is under the BSD license and the license texts are in LICENSE document.
+The sources of HPA are under the BSD license and the license texts are in LICENSE document.
 
 Usage:
- The sources of HPA is implemented using JAVA and the main class is in AnalysisRunner.java. For running HPA, you need to give the program an input system description file as an program argument. For example,
+ The sources of HPA are implemented using JAVA and the main class is in AnalysisRunner.java. For running HPA, you need to give the program an input system description file as an program argument. For example,
 
   java AnalysisRunner example/example0.xml
 
