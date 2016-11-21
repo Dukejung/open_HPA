@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<description SRcount="0">
+    <targetTask>0</targetTask>
+    <task_list>
+        <task id="0" period="62000" deadline="62000" d="0" jitter="0" offset="0">
+            <subtask id="0" priority="53">
+                <computation>
+                    <upper>1010</upper>
+                    <lower>740</lower>
+                </computation>
+            </subtask>
+            <subtask id="1" priority="46">
+                <computation>
+                    <upper>880</upper>
+                    <lower>860</lower>
+                </computation>
+            </subtask>
+            <subtask id="2" priority="47">
+                <computation>
+                    <upper>1160</upper>
+                    <lower>990</lower>
+                </computation>
+            </subtask>
+            <subtask id="3" priority="41">
+                <computation>
+                    <upper>1190</upper>
+                    <lower>830</lower>
+                </computation>
+            </subtask>
+            <subtask id="4" priority="43">
+                <computation>
+                    <upper>810</upper>
+                    <lower>780</lower>
+                </computation>
+            </subtask>
+            <subtask id="5" priority="49">
+                <computation>
+                    <upper>990</upper>
+                    <lower>890</lower>
+                </computation>
+            </subtask>
+            <subtask id="6" priority="58">
+                <computation>
+                    <upper>1180</upper>
+                    <lower>840</lower>
+                </computation>
+            </subtask>
+            <subtask id="7" priority="57">
+                <computation>
+                    <upper>800</upper>
+                    <lower>600</lower>
+                </computation>
+            </subtask>
+            <subtask id="8" priority="42">
+                <computation>
+                    <upper>700</upper>
+                    <lower>680</lower>
+                </computation>
+            </subtask>
+            <subtask id="9" priority="40">
+                <computation>
+                    <upper>1330</upper>
+                    <lower>950</lower>
+                </computation>
+            </subtask>
+        </task>
+        <task id="1" period="22000" deadline="22000" d="0" jitter="0" offset="0">
+            <subtask id="10" priority="72">
+                <computation>
+                    <upper>700</upper>
+                    <lower>550</lower>
+                </computation>
+            </subtask>
+        </task>
+        <task id="2" period="16000" deadline="16000" d="0" jitter="0" offset="0">
+            <subtask id="11" priority="156">
+                <computation>
+                    <upper>950</upper>
+                    <lower>720</lower>
+                </computation>
+            </subtask>
+        </task>
+        <task id="3" period="13600" deadline="13600" d="0" jitter="0" offset="0">
+            <subtask id="12" priority="25">
+                <computation>
+                    <upper>1360</upper>
+                    <lower>910</lower>
+                </computation>
+            </subtask>
+        </task>
+        <task id="4" period="16200" deadline="16200" d="0" jitter="0" offset="0">
+            <subtask id="13" priority="128">
+                <computation>
+                    <upper>880</upper>
+                    <lower>740</lower>
+                </computation>
+            </subtask>
+        </task>
+        <task id="5" period="13800" deadline="13800" d="0" jitter="0" offset="0">
+            <subtask id="14" priority="219">
+                <computation>
+                    <upper>1110</upper>
+                    <lower>910</lower>
+                </computation>
+            </subtask>
+        </task>
+        <task id="6" period="11400" deadline="11400" d="0" jitter="0" offset="0">
+            <subtask id="15" priority="4">
+                <computation>
+                    <upper>810</upper>
+                    <lower>790</lower>
+                </computation>
+            </subtask>
+        </task>
+        <task id="7" period="12000" deadline="12000" d="0" jitter="0" offset="0">
+            <subtask id="16" priority="174">
+                <computation>
+                    <upper>1190</upper>
+                    <lower>990</lower>
+                </computation>
+            </subtask>
+        </task>
+        <task id="8" period="16400" deadline="16400" d="0" jitter="0" offset="0">
+            <subtask id="17" priority="90">
+                <computation>
+                    <upper>820</upper>
+                    <lower>560</lower>
+                </computation>
+            </subtask>
+        </task>
+        <task id="9" period="16800" deadline="16800" d="0" jitter="0" offset="0">
+            <subtask id="18" priority="111">
+                <computation>
+                    <upper>730</upper>
+                    <lower>560</lower>
+                </computation>
+            </subtask>
+        </task>
+        <task id="10" period="19400" deadline="19400" d="0" jitter="0" offset="0">
+            <subtask id="19" priority="195">
+                <computation>
+                    <upper>670</upper>
+                    <lower>500</lower>
+                </computation>
+            </subtask>
+        </task>
+    </task_list>
+    <PE_list>
+        <PE id="0" preemptable="true" core_count="0">
+            <subtask id="7"/>
+            <subtask id="9"/>
+            <subtask id="11"/>
+            <subtask id="12"/>
+        </PE>
+        <PE id="1" preemptable="true" core_count="0">
+            <subtask id="0"/>
+            <subtask id="6"/>
+            <subtask id="10"/>
+            <subtask id="14"/>
+        </PE>
+        <PE id="2" preemptable="true" core_count="0">
+            <subtask id="5"/>
+            <subtask id="18"/>
+            <subtask id="19"/>
+        </PE>
+        <PE id="3" preemptable="true" core_count="0">
+            <subtask id="15"/>
+            <subtask id="16"/>
+            <subtask id="17"/>
+        </PE>
+        <PE id="4" preemptable="true" core_count="0">
+            <subtask id="2"/>
+            <subtask id="3"/>
+            <subtask id="4"/>
+        </PE>
+        <PE id="5" preemptable="true" core_count="0">
+            <subtask id="1"/>
+            <subtask id="8"/>
+            <subtask id="13"/>
+        </PE>
+    </PE_list>
+    <dependency>
+        <edge>
+            <from>0</from>
+            <to>2</to>
+        </edge>
+        <edge>
+            <from>0</from>
+            <to>4</to>
+        </edge>
+        <edge>
+            <from>1</from>
+            <to>4</to>
+        </edge>
+        <edge>
+            <from>1</from>
+            <to>6</to>
+        </edge>
+        <edge>
+            <from>2</from>
+            <to>3</to>
+        </edge>
+        <edge>
+            <from>2</from>
+            <to>9</to>
+        </edge>
+        <edge>
+            <from>3</from>
+            <to>6</to>
+        </edge>
+        <edge>
+            <from>4</from>
+            <to>7</to>
+        </edge>
+        <edge>
+            <from>5</from>
+            <to>7</to>
+        </edge>
+        <edge>
+            <from>6</from>
+            <to>7</to>
+        </edge>
+        <edge>
+            <from>7</from>
+            <to>8</to>
+        </edge>
+    </dependency>
+</description>
