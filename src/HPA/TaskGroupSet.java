@@ -53,7 +53,7 @@ public class TaskGroupSet
 	
 	Long criticalPathLength = (long)-1;
 	Integer maxJitter = 0;
-	Integer wcetMinMax = -1; // getWCET() 함수가 호출 되면 결정 된다. MinMax 수행 결과 가장 WCET 값이 큰 task group 의 값을 저장한다
+	Integer wcetMinMax = -1; // determined when getWCET() function is called. The task group value with the largest WCET value is saved after performing MinMax.
 	
 	Double innerOffset = 0.0;
 

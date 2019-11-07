@@ -29,16 +29,19 @@
 
 package HPA;
 
-import HPA.Debug.Category;
-
-import java.util.*;
-import java.io.*;
+import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.LinkedList;
+import java.util.Queue;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import HPA.Debug.Category;
 
 @XmlRootElement(name = "description")
 class xml_data
@@ -177,20 +180,15 @@ public class Description
 	Debug.Stream DEBUG_DESC;
 	
 	// constructor
-	public Description(String xmlPath)
+	public Description(String inputString)
 	{
-		if(!xmlPath.endsWith(".xml"))
-		{
-			System.err.println("Input file should be end with .xml");
-			System.exit(0);
-		}
 		parseStatus = NONE;
 		error = "";
-		DEBUG_DESC = Debug.Create(Category.DESCRIPTION, xmlPath.replace(".xml", ".desc.log"));
-		DEBUG_ESTI = Debug.Create(Category.ESTIMATION, xmlPath.replace(".xml", ".esti.log"));
-		DEBUG_ANAL = Debug.Create(Category.ANALYSIS, xmlPath.replace(".xml", ".anal.log"));
-
-		if (!parseDescriptionXml(xmlPath))
+		DEBUG_DESC = Debug.Create(Category.DESCRIPTION, "desc.log");
+		DEBUG_ESTI = Debug.Create(Category.ESTIMATION, "esti.log");
+		DEBUG_ANAL = Debug.Create(Category.ANALYSIS,"anal.log");
+		
+		if (!parseDescriptionXmlFromInputString(inputString))
 			printErrorDetail();			
 		postProcessing();
 	}
@@ -202,7 +200,7 @@ public class Description
 		totalTaskList.clear();
 		totalProcessorList.clear();
 		totalTaskGroupSetList.clear();
-		parseDescriptionXml(this.dPath);
+		//parseDescriptionXml(this.dPath);
 	}
 
 	public void CreateDummyNodes()
@@ -481,16 +479,13 @@ public class Description
 		}
 	}
 
-	// parse input file and save it
-	public boolean parseDescriptionXml(String descPath)
+	// parse input from inputString and save it
+	public boolean parseDescriptionXmlFromInputString(String inputString)
 	{
     	try {
-			this.dPath = descPath;
-			
-    		InputStream xmlInput = new FileInputStream(descPath);
     		JAXBContext jaxbContext = JAXBContext.newInstance(xml_data.class);
     		Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-    		xml_data input = (xml_data) unmarshaller.unmarshal(xmlInput);
+    		xml_data input = (xml_data) unmarshaller.unmarshal(new StringReader(inputString));
 
     		init(input);
     	
@@ -508,6 +503,7 @@ public class Description
     		parseStatus = SUCCESS;
     		return true;
     	} catch (Exception e) {
+    		e.printStackTrace();
 			parseStatus = INVALID_FILE;
 			error = "Description:parseDescriptionXml";
 			return false;
@@ -679,27 +675,31 @@ public class Description
 			proc.setPreemtable(processor.preemptable);
 			proc.setName("PE" + processor.id);
 			
-			for (xml_mapping mapping : processor.SubtaskList)
+			//check null processor
+			if(processor.SubtaskList != null)
 			{
-				if (!isValidId(mapping.id, this.numberOfTasks))
+				for (xml_mapping mapping : processor.SubtaskList)
 				{
-					parseStatus = INVALID_VALUE;
-					error = "Description:getProcessorInfo:6";
-					return false;	
-				}
-				if (subtaskMapped[mapping.id])
-				{
-					parseStatus = DUPLICATED;
-					error = "Description:getProcessorInfo:5";
-					return false;
-				}
-				subtaskMapped[mapping.id] = true;
+					if (!isValidId(mapping.id, this.numberOfTasks))
+					{
+						parseStatus = INVALID_VALUE;
+						error = "Description:getProcessorInfo:6";
+						return false;	
+					}
+					if (subtaskMapped[mapping.id])
+					{
+						parseStatus = DUPLICATED;
+						error = "Description:getProcessorInfo:5";
+						return false;
+					}
+					subtaskMapped[mapping.id] = true;
 
-				Task s = this.totalTaskList.getFromId(mapping.id); //KJW
-				proc.getMappedSubtasks().add(s); //KJW
-				s.setMappedProcID(processor.id);//KJW
-				s.setPreemptable(proc.isPreemtable());
-			}
+					Task s = this.totalTaskList.getFromId(mapping.id); //KJW
+					proc.getMappedSubtasks().add(s); //KJW
+					s.setMappedProcID(processor.id);//KJW
+					s.setPreemptable(proc.isPreemtable());
+				}
+			}			
 			
 			this.totalProcessorList.add(proc); //KJW
 		}
