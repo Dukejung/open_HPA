@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DescriptionParameters>
+
+  <PECountMin>4</PECountMin>
+  <PECountMax>8</PECountMax>
+
+  <GraphCountMin>5</GraphCountMin>
+  <GraphCountMax>5</GraphCountMax>
+
+  <CriticalCountMin>2</CriticalCountMin>
+  <CriticalCountMax>3</CriticalCountMax>
+  
+  <QoSMin>10</QoSMin>
+  <QoSMax>10</QoSMax>
+  
+  <TaskCountMin>20</TaskCountMin>
+  <TaskCountMax>20</TaskCountMax>
+
+  <BCETMin>500</BCETMin>
+  <BCETMax>1000</BCETMax>
+  <CompTimeVariation>50</CompTimeVariation>
+
+  <OverheadMin>5</OverheadMin>
+  <OverheadMax>10</OverheadMax>
+  
+  <DistanceMin>0</DistanceMin>
+  <DistanceMax>0</DistanceMax>
+
+  <!-- jitter = period * value / 1000 -->
+  <JitterRatioMin>0</JitterRatioMin>
+  <JitterRatioMax>0</JitterRatioMax>
+
+  <HyperPeriodMax>100</HyperPeriodMax>
+  
+  <!-- 0 : only preemptive -->
+  <!-- 1 : only non-preemptive -->
+  <!-- 2 : mixed -->
+  <PreemptiveMode>0</PreemptiveMode>
+  
+  <!-- 0 : multiple parents and childs -->
+  <!-- 1 : linear graph -->
+  <!-- 2 : no dependency -->
+  <DependencyMode>0</DependencyMode>
+  
+  <!-- 0 : only reexecution -->
+  <!-- 1 : only active replication -->
+  <!-- 2 : only passive replication -->
+  <!-- 3 : mixed -->
+  <HardeningMode>3</HardeningMode>
+</DescriptionParameters>
+
