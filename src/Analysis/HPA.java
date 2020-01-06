@@ -49,6 +49,13 @@ public class HPA
 		DescriptionOptimizer descOptimizer = new DescriptionOptimizer(desc);
 		this.desc = descOptimizer.get();
 	}
+	
+	public HPA(String docString) 
+	{
+		Description desc = Description.loadfromInputString(docString);
+		DescriptionOptimizer descOptimizer = new DescriptionOptimizer(desc);
+		this.desc = descOptimizer.get();
+	}
 
 	public long getWCRT(int graphID)
 	{

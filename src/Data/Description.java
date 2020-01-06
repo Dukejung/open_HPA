@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.StringReader;
 import java.util.ArrayList;
 
 import javax.xml.bind.JAXBContext;
@@ -43,6 +44,27 @@ public class Description {
     		{
     			result = desc;
     			result.FilePath = path;
+    		}
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    	
+    	return result;
+    }
+    
+    public static Description loadfromInputString(String inputString)
+    {
+    	Description result = null;
+    	
+    	try {
+    		JAXBContext jaxbContext = JAXBContext.newInstance(Description.class);
+    		Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+    		Description desc = (Description) unmarshaller.unmarshal(new StringReader(inputString));
+    		
+    		if (desc.assignID() && desc.assignDependency() && desc.assignMapping())
+    		{
+    			result = desc;
+    			result.FilePath = "";
     		}
     	} catch (Exception e) {
     		e.printStackTrace();
