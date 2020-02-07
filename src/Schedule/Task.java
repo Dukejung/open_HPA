@@ -45,6 +45,9 @@ public class Task {
 	public long getBCET() 								{ return data.BCET; }
 	public long getWCET() 								{ return data.WCET; }
 
+	public long getClusteredTasksMaxExecTime() { return data.ClusteredTasksMaxExecTime; }
+
+
 	public boolean isSource() 							{ return parentTasks.isEmpty() ||
 																 (parentTasks.size() == 1 &&
 																  parentTasks.get(0).getID() == getID()); }

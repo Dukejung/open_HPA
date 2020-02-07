@@ -551,9 +551,10 @@ public class HPA
 					continue;
 				if (preemptableTask.hasHigherPriorityThan(target))
 					continue;
-				if (blockingTime < preemptableTask.getWCET())
+
+				if (blockingTime < preemptableTask.getClusteredTasksMaxExecTime())
 				{
-					blockingTime = preemptableTask.getWCET();
+					blockingTime = preemptableTask.getClusteredTasksMaxExecTime();
 					blockingTask = preemptableTask;
 				}
 			}

@@ -11,6 +11,7 @@ public class Task {
     @XmlAttribute(name="Priority")  			public int Priority;
     @XmlAttribute(name="BCET")					public long BCET;
     @XmlAttribute(name="WCET")					public long WCET;
+	@XmlAttribute(name = "ClusteredTasksMaxExecTime")	public long ClusteredTasksMaxExecTime;
     @XmlElement(name="ResourceAccessPattern")	public ArrayList<ResourceAccessPattern> SRAccessPatternList;
 
 	@XmlTransient	public int ID;
@@ -22,6 +23,7 @@ public class Task {
 		Priority = 0;
 		BCET = 0;
 		WCET = 0;
+		ClusteredTasksMaxExecTime = 0;
 		SRAccessPatternList = new ArrayList<ResourceAccessPattern>();
 	}
 	
@@ -32,6 +34,7 @@ public class Task {
 		clone.Priority = this.Priority;
 		clone.BCET = this.BCET;
 		clone.WCET = this.WCET;
+		clone.ClusteredTasksMaxExecTime = this.ClusteredTasksMaxExecTime;
 		
 		clone.SRAccessPatternList = new ArrayList<ResourceAccessPattern>();
 		for (ResourceAccessPattern pattern : this.SRAccessPatternList)
