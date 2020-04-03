@@ -59,8 +59,7 @@ public class HPA
 
 	public long getWCRT(int graphID)
 	{
-		if (success)
-		{
+		if (success) {
 			return schedule.getWCRT(graphID);
 		}
 		return Long.MAX_VALUE;
@@ -97,8 +96,9 @@ public class HPA
 		ITERATION_COUNT = 0;
 		do
 		{
+			System.out.println("ITERATION_COUNT : " + ITERATION_COUNT);
 			changed = false;
-			
+
 			BoundScheduling();
 			
 			if (!CheckDeadlineViolation())
@@ -645,8 +645,7 @@ public class HPA
 		if (startTime < savedReleaseTime)
 			startTime = savedReleaseTime;
 		
-		if (startTime - target.getOwnerInstance().getReleaseMin()
-				> target.getOwnerInstance().getGraph().getDeadline())
+		if (startTime - target.getOwnerInstance().getReleaseMin() > target.getOwnerInstance().getGraph().getDeadline())
 			target.getOwnerInstance().violateDeadline();
 		
 		if (target.getStartMax() < startTime)
@@ -748,8 +747,7 @@ public class HPA
 			changed = true;
 		}
 		
-		if (target.getFinishMax() - target.getOwnerInstance().getReleaseMin() >
-			target.getOwnerInstance().getGraph().getDeadline())
+		if (target.getFinishMax() - target.getOwnerInstance().getReleaseMin() > target.getOwnerInstance().getGraph().getDeadline())
 			target.getOwnerInstance().violateDeadline();
 		
 		// finish phase computation
