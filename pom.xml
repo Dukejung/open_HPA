@@ -31,4 +31,5 @@
   		<version>2.3.1</version>
   	</dependency>
   </dependencies>
+  <packaging>pom</packaging>
 </project>
