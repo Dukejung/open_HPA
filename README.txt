@@ -12,8 +12,8 @@ Usage:
 We also enclose an example description file in the example folder. It defines
   1) Task Graphs : xml element "Graph". it has timing properties inside xml element "Activation" such as period, deadline, and jitter.
   2) Tasks in the graph : xml element "Task". It has priority and computation time-bound with BCET(Best-Case Execution Time) and WCRT(Worst-Case Execution Time).
-  4) Task dependency : xml element "Dependency". It has names of the source and destination task.
-  3) Processing Elements : xml element " ProcessingElement". the attribute "Preemptable" means the processing element uses preemptive scheduling policy or not. The elements "Mapping" list the mapped tasks.
+  3) Task dependency : xml element "Dependency". It has names of the source and destination task.
+  4) Processing Elements : xml element " ProcessingElement". the attribute "Preemptable" means the processing element uses preemptive scheduling policy or not. The elements "Mapping" list the mapped tasks.
 
 References:
 Junchul Choi, Hyunok Oh, and Soonhoi Ha, "A Hybrid Performance Analysis Technique for Distributed Real-Time Embedded Systems," https://link.springer.com/article/10.1007/s11241-018-9307-x
