@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Description SRcount="0">
+    <Graph Name="0">
+        <Activation Period="50" Jitter="0" Distance="0" StartOffset="0" Deadline="100"/>
+        <Task Name="0" Priority="0" BCET="40" WCET="40"/>
+        <Task Name="1" Priority="1" BCET="10" WCET="10"/>
+        <Dependency Source="0" Destination="1"/>
+    </Graph>
+    <Graph Name="1">
+        <Activation Period="50" Jitter="0" Distance="0" StartOffset="0" Deadline="100"/>
+        <Task Name="2" Priority="2" BCET="40" WCET="40"/>
+        <Task Name="3" Priority="3" BCET="10" WCET="10"/>
+        <Dependency Source="2" Destination="3"/>
+    </Graph>
+    <ProcessingElement Name="0" Preemptable="false" CoreCount="0">
+        <Mapping Task="0"/>
+        <Mapping Task="2"/>
+    </ProcessingElement>
+    <ProcessingElement Name="1" Preemptable="false" CoreCount="0">
+        <Mapping Task="1"/>
+        <Mapping Task="3"/>
+    </ProcessingElement>
+</Description>
