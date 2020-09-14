@@ -22,7 +22,16 @@ public class Description {
     @XmlElement(name="ProcessingElement")	public ArrayList<ProcessingElement> PEList;
 
 	@XmlTransient	public String FilePath;
+	private static JAXBContext jaxbContext;
 	
+	static {
+		try {
+			jaxbContext = JAXBContext.newInstance(Description.class);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	public Description()
 	{
 		SRcount = 0;
@@ -34,9 +43,8 @@ public class Description {
     {
     	Description result = null;
     	
-    	try {
+		try {
     		InputStream xmlInput = new FileInputStream(path);
-    		JAXBContext jaxbContext = JAXBContext.newInstance(Description.class);
     		Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
     		Description desc = (Description) unmarshaller.unmarshal(xmlInput);
     		
@@ -45,10 +53,10 @@ public class Description {
     			result = desc;
     			result.FilePath = path;
     		}
-    	} catch (Exception e) {
-    		e.printStackTrace();
-    	}
-    	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
     	return result;
     }
     
@@ -56,8 +64,7 @@ public class Description {
     {
     	Description result = null;
     	
-    	try {
-    		JAXBContext jaxbContext = JAXBContext.newInstance(Description.class);
+    	try {    		    		
     		Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
     		Description desc = (Description) unmarshaller.unmarshal(new StringReader(inputString));
     		
@@ -68,8 +75,8 @@ public class Description {
     		}
     	} catch (Exception e) {
     		e.printStackTrace();
-    	}
-    	
+    	}    	
+
     	return result;
     }
     
@@ -77,7 +84,6 @@ public class Description {
     {
         try {
         	OutputStream xmlOutput = new FileOutputStream(path);
-			JAXBContext jaxbContext = JAXBContext.newInstance(Description.class);
 			Marshaller marshaller = jaxbContext.createMarshaller();
 			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true); 
 			marshaller.marshal(this, xmlOutput);
